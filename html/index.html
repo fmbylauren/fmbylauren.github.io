@@ -1,0 +1,52 @@
+<html>
+    <head>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+    </head>
+    <body>
+        <input id="txtName" type="text" />
+        <input id="txtName2" type="text" />
+        <input id="btnAdd" type="button" value="Add" />
+        <table id="tbNames" border="1" >
+            <tr>
+                <th>Name</b></th>
+                <th>Name2</b></th>
+                <th>Delete</b></th>
+            </tr>
+            <tr>
+                <td>Bingo</td>
+                <td>Tingo</td>
+                <td><img src="Delete.gif" height="15" class="delete" /></td>
+            </tr>
+        </table>
+        <input id="insert_data" type="button" style="height: 35px; width: 225px" value="Retrieve Default User" />
+
+
+        <script type="text/javascript">
+            var data = [];
+            data.push(["Coco", "Mandy"]); 
+            data.push(["Suzze", "Candy"]); 
+            data.push(["Janny", "Jacky"]);
+            
+            
+            $(document).ready(function() {
+                 $('#btnAdd').live('click', function() {
+                    var name = $('#txtName').val();
+                    var name2 = $('#txtName2').val();
+                    $("#tbNames tr:last").after("<tr><td>" + name + "</td><td>" + name2 + "</td><td><img src='delete.gif' class='delete' height='15' /></td></tr>");
+                 });
+            
+                 $('#tbNames td img.delete').live('click', function() {
+                    $(this).parent().parent().remove();
+                 });
+            
+                 $("#insert_data").click(function() { 
+                    for(var i=0; i<data.length; i++){ 
+                        $("#tbNames tr:last").after("<tr><td>" + data[i][0] + "</td><td>" + data[i][1] + "</td><td><img src='delete.gif' class='delete' height='15' /></td></tr>"); 
+                    } 
+                });
+            });
+            </script>
+    </body>
+</html>
